@@ -1,0 +1,33 @@
+= form_for @medic_work_scheduling do |f|
+  - if @medic_work_scheduling.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@medic_work_scheduling.errors.count, "error")} prohibited this medic_work_scheduling from being saved:"
+      ul
+        - @medic_work_scheduling.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :perDay
+    = f.number_field :perDay
+  .field
+    = f.label :last
+    = f.datetime_select :last
+  .field
+    = f.label :counter_of_day
+    = f.number_field :counter_of_day
+  .field
+    = f.label :info
+    = f.text_field :info
+  .field
+    = f.label :days_of_week
+    = f.text_field :days_of_week
+  .field
+    = f.label :clinic_profile
+    = f.text_field :clinic_profile
+  .field
+    = f.label :speciality
+    = f.text_field :speciality
+  .field
+    = f.label :complement
+    = f.text_field :complement
+  .actions = f.submit

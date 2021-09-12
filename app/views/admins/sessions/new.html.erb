@@ -1,0 +1,41 @@
+<%= stylesheet_link_tag 'application' %>
+<%= stylesheet_link_tag 'admin' %>
+
+<div>
+  <a class="hiddenanchor" id="signup"></a>
+  <a class="hiddenanchor" id="signin"></a>
+
+  <div class="login_wrapper">
+    <div class="animate form login_form">
+      <section class="login_content">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <h1 style="color: white">Login</h1>
+
+          <div>            
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Usuário" %>
+          </div>
+
+          <div>            
+            <%= f.password_field :password, autocomplete: "current-password", class:"form-control", placeholder: "Senha"%>
+          </div>
+
+          <div>
+            <%= f.submit "Entrar", class: "btn btn-danger", style: "width: 100%; margin: 0; color: white" %>
+          </div>          
+
+          <br>
+          <div class="clearfix"></div>
+
+          <div class="separator">            
+
+            <div class="clearfix"></div>
+            <br />
+
+            
+          </div>
+
+        <% end %>        
+      </section>
+    </div>
+  </div>
+</div>

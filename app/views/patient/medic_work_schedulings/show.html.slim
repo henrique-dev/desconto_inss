@@ -1,0 +1,30 @@
+p#notice = notice
+
+p
+  strong Perday:
+  = @medic_work_scheduling.perDay
+p
+  strong Last:
+  = @medic_work_scheduling.last
+p
+  strong Counter of day:
+  = @medic_work_scheduling.counter_of_day
+p
+  strong Info:
+  = @medic_work_scheduling.info
+p
+  strong Days of week:
+  = @medic_work_scheduling.days_of_week
+p
+  strong Clinic profile:
+  = @medic_work_scheduling.clinic_profile
+p
+  strong Speciality:
+  = @medic_work_scheduling.speciality
+p
+  strong Complement:
+  = @medic_work_scheduling.complement
+
+=> link_to 'Edit', edit_medic_work_scheduling_path(@medic_work_scheduling)
+'|
+=< link_to 'Back', medic_work_schedulings_path

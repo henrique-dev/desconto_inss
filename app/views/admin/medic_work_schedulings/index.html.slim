@@ -1,0 +1,28 @@
+ul.breadcrumbs  
+  li Médicos
+
+div.x_panel 
+  div.x_title
+    = link_to 'Nova agenda', new_medic_work_scheduling_path, class: "btn btn-primary btn-sm"
+  div.x_content    
+    div.row.table-responsive
+      table.table.table-striped.jambo_table.bulk_action
+        thead
+          tr
+            th Médico
+            th Especialidade
+            th Clínica
+            th width="100px"
+            th width="100px"
+            th width="100px"
+
+        tbody
+          - @medic_work_schedulings.each do |medic_work_scheduling|
+            tr
+              td = medic_work_scheduling.medic_profile.name
+              td = medic_work_scheduling.speciality.name
+              td = medic_work_scheduling.clinic_profile.clinic.name
+              td = link_to 'Mostrar', medic_work_scheduling, class: "btn btn-success btn-sm"
+              td = link_to 'Editar', edit_medic_work_scheduling_path(medic_work_scheduling), class: "btn btn-warning btn-sm"
+              td = link_to 'Excluir', medic_work_scheduling, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-danger btn-sm"
+    = my_will_paginate(@medic_work_schedulings).html_safe

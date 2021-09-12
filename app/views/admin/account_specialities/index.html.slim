@@ -1,0 +1,29 @@
+h1 Listing account_specialities
+
+table
+  thead
+    tr
+      th Used at
+      th Used
+      th Speciality
+      th Patient account
+      th Medic profile
+      th
+      th
+      th
+
+  tbody
+    - @account_specialities.each do |account_speciality|
+      tr
+        td = account_speciality.used_at
+        td = account_speciality.used
+        td = account_speciality.speciality
+        td = account_speciality.patient_account
+        td = account_speciality.medic_profile
+        td = link_to 'Show', account_speciality
+        td = link_to 'Edit', edit_account_speciality_path(account_speciality)
+        td = link_to 'Destroy', account_speciality, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Account speciality', new_account_speciality_path

@@ -1,0 +1,65 @@
+ul.breadcrumbs
+  li  
+    a href="#{clinic_profiles_path}"
+      | Clínicas
+    span.separator
+  li Mostrar
+
+div.x_panel
+  div.x_content    
+    p#notice = notice
+
+    .row
+      .col-md-8
+        .form-group
+          label Nome:
+          = text_field_tag nil, @clinic.name, class: "form-control", disabled: "disabled"    
+      .col-md-4
+        .form-group
+          label CNPJ:
+          = text_field_tag nil, @clinic.cnpj, class: "form-control", disabled: "disabled"
+    .row
+      .col-md-12    
+        .form-group
+          label Descrição:
+          = text_field_tag nil, @clinic_profile.description, class: "form-control", disabled: "disabled"    
+    
+    h2 Endereço  
+    .row
+      .col-md-2
+        .form-group
+          label Cep
+          = text_field_tag :zipcode, @address.zipcode,  class: "form-control", disabled: "disabled"
+      .col-md-5
+        .form-group
+          label Rua
+          = text_field_tag :street, @address.street,  class: "form-control", disabled: "disabled"
+      .col-md-1
+        .form-group
+          label Número
+          = text_field_tag :number, @address.number,  class: "form-control", disabled: "disabled"
+      .col-md-4
+        .form-group
+          label Bairro
+          = text_field_tag :neighborhood, @address.neighborhood,  class: "form-control", disabled: "disabled"
+    .row
+      .col-md-6
+        .form-group
+          label Cidade
+          = text_field_tag :city, @address.city,  class: "form-control", disabled: "disabled"
+      .col-md-6
+        .form-group
+          label Estado
+          = text_field_tag :state, @address.state,  class: "form-control", disabled: "disabled"
+    h2 Imagens
+    - if @clinic_profile.photos
+      .row
+        .col-md-12
+          .form-group    
+            .row
+              - @clinic_profile.photos.each do |photo|
+                .col-2 style="height: 250px"
+                  = image_tag(photo, class: "img-ctn" ,style: "width: 100%; height: 100%; padding: 5px; border: 1px solid red")
+
+    => link_to 'Editar', edit_clinic_profile_path(@clinic_profile), id: "btn_editar", class: "btn btn-primary btn-sm", style: "display: inline-block"
+    =< link_to 'Voltar', clinic_profiles_path, id: "btn_voltar", class: "btn btn-primary btn-sm", style: "display: inline-block"

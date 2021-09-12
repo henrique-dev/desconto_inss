@@ -1,0 +1,18 @@
+ul.breadcrumbs
+  li  
+    a href="#{patient_profiles_path}"
+      | Médicos
+    span.separator
+  li Editar
+
+== render 'form'
+
+=> link_to 'Mostrar', @product_product, id: "btn_mostrar", class: "btn btn-primary btn-sm", style: "display: inline-block"
+=< link_to 'Voltar', medic_profiles_path, id: "btn_voltar", class: "btn btn-secondary btn-sm", style: "display: inline-block"
+
+javascript:
+    let div = document.getElementsByTagName("form")[0].getElementsByClassName("actions")[0];
+    let button1 = document.getElementById("btn_mostrar");
+    let button2 = document.getElementById("btn_voltar");
+    div.append(button1);
+    div.append(button2);

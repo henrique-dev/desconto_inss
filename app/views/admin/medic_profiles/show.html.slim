@@ -1,0 +1,86 @@
+ul.breadcrumbs
+  li  
+    a href="#{medic_profiles_path}"
+      | Médicos
+    span.separator
+  li Mostrar
+
+div.x_panel
+  div.x_content
+    p#notice = notice
+    h2 Usuário
+    .row
+      .col-md-6
+        .form-group
+          label CPF
+          = text_field_tag :cpf, @medic_profile.medic.cpf, class: "form-control", disabled: "disabled"
+      .col-md-6
+        .form-group
+          label Email
+          = text_field_tag :uid, @medic_profile.medic.uid, class: "form-control", disabled: "disabled"
+      br    
+
+    h2 Perfil do Usuário
+    .row
+      .col-md-6
+        .form-group
+          label Nome
+          = text_field_tag :name, @medic_profile.name, class: "form-control", disabled: "disabled"
+      .col-md-3
+        .form-group
+          label Gênero        
+          = text_field_tag :genre, @medic_profile.genre, class: "form-control", disabled: "disabled"
+      .col-md-3
+        .form-group
+          label Aniversário
+          = text_field_tag :birth_date, @medic_profile.birth_date, class: "form-control", disabled: "disabled"
+    .row    
+      .col-md-3
+        .form-group
+          label Altura
+          = text_field_tag :height, @medic_profile.height, class: "form-control", disabled: "disabled"
+      .col-md-3
+        .form-group
+          label Tipo sanguíneo
+          = text_field_tag :bloodtype, @medic_profile.bloodtype, class: "form-control", disabled: "disabled"
+      .col-md-3
+        .form-group
+          label Peso
+          = text_field_tag :weight, @medic_profile.weight, class: "form-control", disabled: "disabled"
+      .col-md-3
+        .form-group
+          label Telefone
+          = text_field_tag :telephone, @medic_profile.telephone, class: "form-control", disabled: "disabled"
+    br
+
+    h2 Endereço  
+    .row
+      .col-md-2
+        .form-group
+          label Cep
+          = text_field_tag :zipcode, @medic_profile.address.zipcode,  class: "form-control", disabled: "disabled"
+      .col-md-5
+        .form-group
+          label Rua
+          = text_field_tag :street, @medic_profile.address.street,  class: "form-control", disabled: "disabled"
+      .col-md-1
+        .form-group
+          label Número
+          = text_field_tag :number, @medic_profile.address.number,  class: "form-control", disabled: "disabled"
+      .col-md-4
+        .form-group
+          label Bairro
+          = text_field_tag :neighborhood, @medic_profile.address.neighborhood,  class: "form-control", disabled: "disabled"
+    .row
+      .col-md-6
+        .form-group
+          label Cidade
+          = text_field_tag :city, @medic_profile.address.city,  class: "form-control", disabled: "disabled"
+      .col-md-6
+        .form-group
+          label Estado
+          = text_field_tag :state, @medic_profile.address.state,  class: "form-control", disabled: "disabled"
+
+
+    => link_to 'Editar', edit_medic_profile_path(@medic_profile), id: "btn_editar", class: "btn btn-primary btn-sm", style: "display: inline-block"
+    =< link_to 'Voltar', medic_profiles_path, id: "btn_voltar", class: "btn btn-secondary btn-sm", style: "display: inline-block"

@@ -1,0 +1,24 @@
+= form_for @account_speciality do |f|
+  - if @account_speciality.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@account_speciality.errors.count, "error")} prohibited this account_speciality from being saved:"
+      ul
+        - @account_speciality.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :used_at
+    = f.datetime_select :used_at
+  .field
+    = f.label :used
+    = f.check_box :used
+  .field
+    = f.label :speciality
+    = f.text_field :speciality
+  .field
+    = f.label :patient_account
+    = f.text_field :patient_account
+  .field
+    = f.label :medic_profile
+    = f.text_field :medic_profile
+  .actions = f.submit

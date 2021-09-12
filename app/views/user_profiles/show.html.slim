@@ -1,0 +1,24 @@
+p#notice = notice
+
+p
+  strong Genre:
+  = @user_profile.genre
+p
+  strong Birth date:
+  = @user_profile.birth_date
+p
+  strong Height:
+  = @user_profile.height
+p
+  strong Bloodtype:
+  = @user_profile.bloodtype
+p
+  strong Telephone:
+  = @user_profile.telephone
+p
+  strong Weight:
+  = @user_profile.weight
+
+=> link_to 'Edit', edit_user_profile_path(@user_profile)
+'|
+=< link_to 'Back', user_profiles_path

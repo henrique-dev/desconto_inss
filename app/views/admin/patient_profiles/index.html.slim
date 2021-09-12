@@ -1,0 +1,30 @@
+ul.breadcrumbs  
+  li Pacientes
+
+div.x_panel 
+  div.x_title
+    = link_to 'Novo paciente', new_patient_profile_path, class: "btn btn-primary btn-sm"  
+  div.x_content    
+    div.row.table-responsive
+      table.table.table-striped.jambo_table.bulk_action
+        thead
+          tr.headings
+            th.column-title Nome
+            th.column-title Gênero          
+            th.column-title Telefone
+            th.column-title Email
+            th.column-title width="100px"
+            th.column-title width="100px"
+            th.column-title width="100px"
+
+        tbody
+          - @patient_profiles.each do |patient_profile|
+            tr
+              td = patient_profile.name
+              td = patient_profile.genre == "m" ? "Masculino" : "Feminino"
+              td = patient_profile.telephone
+              td = patient_profile.patient.email
+              td = link_to 'Mostrar', patient_profile, class: "btn btn-success btn-sm"
+              td = link_to 'Editar', edit_patient_profile_path(patient_profile), class: "btn btn-warning btn-sm"
+              td = link_to 'Excluir', patient_profile, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-danger btn-sm"
+      = my_will_paginate(@medic_profiles).html_safe

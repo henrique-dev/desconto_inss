@@ -1,0 +1,100 @@
+div.x_panel
+  div.x_content
+    = form_for @medic_work_scheduling do |f|
+      - if @medic_work_scheduling.errors.any?
+        #error_explanation
+          h2 = "#{pluralize(@medic_work_scheduling.errors.count, "error")} prohibited this medic_work_scheduling from being saved:"
+          ul
+            - @medic_work_scheduling.errors.full_messages.each do |message|
+              li = message
+      .row        
+        .col-md-10
+          .form-group
+            .field
+              = f.label "Descrição"
+              = f.text_field :info, class: "form-control"
+        /.col-md-2
+          .form-group
+            = f.label "Consultas por dia"
+            = f.number_field :per_day, class: "form-control", min: "1"
+      br
+      .row
+        = f.text_field :days_of_week, class: "form-control", hidden: "hidden"
+        .col-md-12
+          .form-group
+            = f.label "Dias de consulta"
+            .row
+              .col-md-1
+                .form-check
+                  = check_box_tag "check_box_0", "1", false, class: "form-check-input check-box-day", data: {"index" => 0}
+                  = f.label "Domingo", class: "form-check-label", for: "check_box_0"
+              .col-md-1
+                .form-check
+                  = check_box_tag "check_box_1", "1", false, class: "form-check-input check-box-day", data: {"index" => 1}
+                  = f.label "Segunda feira", class: "form-check-label", for: "check_box_1"
+              .col-md-1
+                .form-check
+                  = check_box_tag "check_box_2", "1", false, class: "form-check-input check-box-day", data: {"index" => 2}
+                  = f.label "Terça feira", class: "form-check-label", for: "check_box_2"
+              .col-md-1
+                .form-check
+                  = check_box_tag "check_box_3", "1", false, class: "form-check-input check-box-day", data: {"index" => 3}
+                  = f.label "Quarta feira", class: "form-check-label", for: "check_box_3"
+              .col-md-1
+                .form-check
+                  = check_box_tag "check_box_4", "1", false, class: "form-check-input check-box-day", data: {"index" => 4}
+                  = f.label "Quinta feira", class: "form-check-label", for: "check_box_4"
+              .col-md-1
+                .form-check
+                  = check_box_tag "check_box_5", "1", false, class: "form-check-input check-box-day", data: {"index" => 5}
+                  = f.label "Sexta feira", class: "form-check-label", for: "check_box_5"
+              .col-md-1
+                .form-check
+                  = check_box_tag "check_box_6", "1", false, class: "form-check-input check-box-day", data: {"index" => 6}
+                  = f.label "Sábado", class: "form-check-label", for: "check_box_6"
+      br
+      .row
+        .col-md-12
+          .form-group
+            = f.label "Médico"
+            = f.select(:medic_profile_id, MedicProfile.all.collect {|s| [ s.name, s.id ] }, { include_blank: false }, class: "form-control")
+      .row
+        .col-md-6
+          .form-group
+            = f.label "Especialidade"
+            = f.select(:speciality_id, Speciality.all.collect {|s| [ s.name, s.id ] }, { include_blank: false }, class: "form-control")
+        .col-md-6
+          .form-group
+            = f.label "Clínica"
+            = f.select(:clinic_profile_id, Clinic.all.collect {|s| [ s.name, s.clinic_profile_id ] }, { include_blank: false }, class: "form-control")
+      .row
+        .col-md-12
+          .form-group
+            = f.label "Complemento"
+            = f.text_area :complement, class: "form-control", style: "min-height: 100px; max-height: 100px"
+
+      .actions = f.submit "Salvar", class: "btn btn-success btn-sm"
+
+= javascript_include_tag 'medic_work_schedulings'
+
+javascript:
+  String.prototype.replaceAt = function(index, replacement) {
+    return this.substr(0, index) + replacement + this.substr(index + replacement.length);
+  }
+
+  jQuery(".check-box-day").click(function() {
+    let day = jQuery(this).is(":checked") ? "1" : "0";
+    let index = parseInt(jQuery(this).data("index"));
+    let daysOfWeek = jQuery("#medic_work_scheduling_days_of_week").val();
+    daysOfWeek = daysOfWeek.replaceAt(index, day);
+    jQuery("#medic_work_scheduling_days_of_week").val(daysOfWeek);
+  });
+
+  jQuery(document).ready(function() {
+    let daysOfWeek = jQuery("#medic_work_scheduling_days_of_week").val();
+    for (let i=0; i<daysOfWeek.length; i++) {      
+      if (daysOfWeek[i] == 1) {
+        jQuery("#check_box_" + i).attr("checked", true);
+      }
+    }
+  });

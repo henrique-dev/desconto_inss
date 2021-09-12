@@ -1,0 +1,21 @@
+p#notice = notice
+
+p
+  strong Used at:
+  = @account_speciality.used_at
+p
+  strong Used:
+  = @account_speciality.used
+p
+  strong Speciality:
+  = @account_speciality.speciality
+p
+  strong Patient account:
+  = @account_speciality.patient_account
+p
+  strong Medic profile:
+  = @account_speciality.medic_profile
+
+=> link_to 'Edit', edit_account_speciality_path(@account_speciality)
+'|
+=< link_to 'Back', account_specialities_path

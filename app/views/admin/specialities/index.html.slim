@@ -1,0 +1,28 @@
+ul.breadcrumbs  
+  li Especialidades
+
+div.x_panel 
+  div.x_title
+    = link_to 'Nova especilidade', new_speciality_path, class: "btn btn-primary btn-sm"
+  div.x_content    
+    div.row.table-responsive
+      table.table.table-striped.jambo_table.bulk_action
+        thead
+          tr
+            th Nome
+            th Descrição
+            th Requer encaminhamento
+            th width="100px"
+            th width="100px"
+            th width="100px"
+
+        tbody
+          - @specialities.each do |speciality|
+            tr
+              td = speciality.name
+              td = speciality.description
+              td = speciality.priv ? "Sim" : "Não"
+              td = link_to 'Mostrar', speciality, class: "btn btn-success btn-sm"
+              td = link_to 'Editar', edit_speciality_path(speciality), class: "btn btn-warning btn-sm"
+              td = link_to 'Excluir', speciality, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-danger btn-sm"
+    = my_will_paginate(@medic_profiles).html_safe

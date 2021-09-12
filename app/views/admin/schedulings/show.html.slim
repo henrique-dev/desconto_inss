@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong For date:
+  = @scheduling.for_date
+p
+  strong Consulted:
+  = @scheduling.consulted
+p
+  strong Medic work scheduling:
+  = @scheduling.medic_work_scheduling
+p
+  strong Patient profile:
+  = @scheduling.patient_profile
+
+=> link_to 'Edit', edit_scheduling_path(@scheduling)
+'|
+=< link_to 'Back', schedulings_path

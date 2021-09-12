@@ -1,0 +1,21 @@
+h1 Listing patient_accounts
+
+table
+  thead
+    tr
+      th Patient profile
+      th
+      th
+      th
+
+  tbody
+    - @patient_accounts.each do |patient_account|
+      tr
+        td = patient_account.patient_profile
+        td = link_to 'Show', patient_account
+        td = link_to 'Edit', edit_patient_account_path(patient_account)
+        td = link_to 'Destroy', patient_account, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Patient account', new_patient_account_path

@@ -1,0 +1,27 @@
+h1 Listing schedulings
+
+table
+  thead
+    tr
+      th For date
+      th Consulted
+      th Medic work scheduling
+      th Patient profile
+      th
+      th
+      th
+
+  tbody
+    - @schedulings.each do |scheduling|
+      tr
+        td = scheduling.for_date
+        td = scheduling.consulted
+        td = scheduling.medic_work_scheduling
+        td = scheduling.patient_profile
+        td = link_to 'Show', scheduling
+        td = link_to 'Edit', edit_scheduling_path(scheduling)
+        td = link_to 'Destroy', scheduling, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Scheduling', new_scheduling_path

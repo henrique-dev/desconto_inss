@@ -1,0 +1,62 @@
+div.x_panel
+  div.x_content    
+    = form_for @clinic_profile do |f|
+      - if @clinic_profile.errors.any?
+        #error_explanation
+          h2 = "#{pluralize(@clinic_profile.errors.count, "error")} prohibited this clinic_profile from being saved:"
+          ul
+            - @clinic_profile.errors.full_messages.each do |message|
+              li = message
+
+      = fields_for :clinic, @clinic do |c|
+        .row
+          .col-md-8
+            .form-group
+              = c.label "Nome"
+              = c.text_field :name, class: "form-control"
+          .col-md-4
+            .form-group
+              = c.label "CNPJ"
+              = c.text_field :cnpj, class: "form-control"
+      .row
+        .col-md-12
+          .form-group
+            = f.label "Descrição"
+            = f.text_field :description, class: "form-control"
+
+      h2 Endereço  
+      = fields_for :address, @address do |ad|
+        .row
+          .col-md-2
+            .form-group
+              = ad.label "Cep"
+              = ad.text_field :zipcode, class: "form-control"
+          .col-md-5
+            .form-group
+              = ad.label "Rua"
+              = ad.text_field :street, class: "form-control"
+          .col-md-1
+            .form-group
+              = ad.label "Número"
+              = ad.text_field :number, class: "form-control"
+          .col-md-4
+            .form-group
+              = ad.label "Bairro"
+              = ad.text_field :neighborhood, class: "form-control"
+        .row
+          .col-md-6
+            .form-group
+              = ad.label "Cidade"
+              = ad.text_field :city, class: "form-control"
+          .col-md-6
+            .form-group
+              = ad.label "Estado"
+              = ad.text_field :state, class: "form-control"
+
+      .actions = f.submit "Salvar", class: "btn btn-success btn-sm"
+
+= javascript_include_tag 'clinic_profiles'
+
+javascript:
+  jQuery("#clinic_cnpj").inputmask({mask : "99.999.999/9999-99", regex : "[0-9]"});
+  jQuery("#address_zipcode").inputmask({mask : "99999-999", regex : "[0-9]"});
