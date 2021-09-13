@@ -1,13 +1,11 @@
-Rails.application.routes.draw do  
+Rails.application.routes.draw do
+  require 'sidekiq/web'
 
-  require 'sidekiq/web'  
-  
   devise_for :admins, at: 'admins/auth'
-  
+
   mount Sidekiq::Web => '/sidekiq'
 
   scope module: 'admin' do
-
     resources :users do
       member do
         post :calculate_deduction
@@ -17,22 +15,22 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :reports do      
+    resources :reports do
       collection do
         get :general
       end
     end
 
-    root to: "home#index"
+    root to: 'home#index'
     get 'home/index'
-  end  
-  
+  end
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root to: 'home#index'
   get 'home/index'
-  #get 'inicio', to: 'home/admin#index'
-  #root to: 'home/admin#index'
+  # get 'inicio', to: 'home/admin#index'
+  # root to: 'home/admin#index'
 end
 
-# belongs_to :profile, class_name: "PatientProfile", optional: true, foreign_key: "patient_profile_id"  
+# belongs_to :profile, class_name: "PatientProfile", optional: true, foreign_key: "patient_profile_id"
