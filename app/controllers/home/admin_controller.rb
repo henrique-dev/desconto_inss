@@ -1,4 +1,4 @@
 class Home::AdminController < AdminController
-  def index        
+  def index
   end
 end
