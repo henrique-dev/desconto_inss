@@ -1,15 +1,15 @@
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.16"
+lock '~> 3.16'
 
-set :application, "marcacao_consulta"
-set :repo_url, "git@github.com:EricsonCorrea1/marcacao_consulta.git"
+set :application, 'marcacao_consulta'
+set :repo_url, 'git@github.com:EricsonCorrea1/marcacao_consulta.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
-set :branch, "master"
+set :branch, 'master'
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, "/var/www/marcacao_consulta"
+set :deploy_to, '/var/www/marcacao_consulta'
 
 # Default value for :format is :airbrussh.
 set :format, :airbrussh
@@ -24,10 +24,10 @@ set :log_level, :debug
 # set :pty, true
 
 # Default value for :linked_files is []
-append :linked_files, "config/database.yml", "config/master.key"
+append :linked_files, 'config/database.yml', 'config/master.key'
 
 # Default value for linked_dirs is []
-append :linked_dirs, "storage", "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system", "pub"
+append :linked_dirs, 'storage', 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/system', 'pub'
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
@@ -44,8 +44,8 @@ set :keep_releases, 5
 after 'deploy:finished', 'deploy:restart'
 
 namespace :deploy do
-    task :restart do
-        invoke 'unicorn:stop'
-        invoke 'unicorn:start'
-    end
+  task :restart do
+    invoke 'unicorn:stop'
+    invoke 'unicorn:start'
+  end
 end

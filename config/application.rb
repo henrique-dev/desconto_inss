@@ -1,6 +1,6 @@
 require_relative 'boot'
 
-#require 'rails/all'
+# require 'rails/all'
 require 'rails'
 
 require 'active_model/railtie'
@@ -29,6 +29,6 @@ module MarcacaoConsulta
 
     config.active_job.queue_adapter = :sidekiq
 
-    config.assets.paths << Rails.root.join("node_modules", "bootstrap", "fonts")
+    config.assets.paths << Rails.root.join('node_modules', 'bootstrap', 'fonts')
   end
 end
