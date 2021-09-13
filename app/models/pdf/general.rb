@@ -44,22 +44,7 @@ class Pdf::General
             end
         end
 
-        pdf.table(linhas, :width => pdf.bounds.width, :cell_style => { size: 7, padding: 3},) do |row|
-            ranges.size.times do |i|
-                #row.row(i).columns(0).font_style = :bold
-                #row.row(i).columns(0).align = :center
-                #row.row(i).columns(0).size = 12
-                
-                #row.row(i).columns(1).font_style = :bold
-                #row.row(i).columns(1).align = :center
-                #row.row(i).columns(1).size = 12
-            end
-		end
-
         series = []
-        #series << Prawn::Graph::Series.new([5,4,3,2,7,9,2,8,7,5,4,9,2],  title: "Another label", type: :line, mark_average: true, mark_minimum: true)
-        #series << Prawn::Graph::Series.new([1,2,3,4,5,9,6,4,5,6,3,2,11], title: "Yet another label", type: :bar)
-        #series << Prawn::Graph::Series.new([1,2,3,4,5,12,6,4,5,6,3,2,9].shuffle, title: "One final label", type: :line, mark_average: true, mark_maximum: true)
 
         xaxis_labels = []
         data_series = []
@@ -77,5 +62,5 @@ class Pdf::General
         pdf.graph series, width: pdf.bounds.width, height: 200, title: "Distribuição de renda", at: [10, 650], xaxis_labels: xaxis_labels
         
     end
-    
+
 end

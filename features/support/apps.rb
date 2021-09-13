@@ -1,4 +1,4 @@
-# Declarando a classe App que é onde as pages serão instanciadas
+# Declarando a classe App que e onde as pages serao instanciadas
 class App
   def home
     Home.new
