@@ -28,32 +28,42 @@
       .form-group
         = f.label "Desconto INSS"
         = f.text_field :deduction, class: "form-control" , readonly: true, value: @user.deduction
-  .row
-    .col-10
+  .row          
+    .col-6
       .form-group
-        = f.label "Logradouro"
-        = f.text_field :street, class: "form-control"
-    .col-2
+        = f.label "Telefone pessoal"
+        = f.number_field :telephone_1, class: "form-control"
+    .col-6
       .form-group
-        = f.label "Número"
-        = f.text_field :number, class: "form-control"
-  .row
-    .col-3
-      .form-group
-        = f.label "Bairro"
-        = f.text_field :neighborhood, class: "form-control"
-    .col-3
-      .form-group
-        = f.label "Cidade"
-        = f.text_field :city, class: "form-control"
-    .col-3
-      .form-group
-        = f.label "Estado"
-        = f.text_field :state, class: "form-control"
-    .col-3
-      .form-group
-        = f.label "CEP"
-        = f.text_field :zipcode, class: "form-control"
+        = f.label "Telefone referencia"
+        = f.number_field :telephone_2, class: "form-control"
+  = f.fields_for :address do |f2|
+    .row
+      .col-10
+        .form-group
+          = f2.label "Logradouro"
+          = f2.text_field :street, class: "form-control"
+      .col-2
+        .form-group
+          = f2.label "Número"
+          = f2.text_field :number, class: "form-control"
+    .row
+      .col-3
+        .form-group
+          = f2.label "Bairro"
+          = f2.text_field :neighborhood, class: "form-control"
+      .col-3
+        .form-group
+          = f2.label "Cidade"
+          = f2.text_field :city, class: "form-control"
+      .col-3
+        .form-group
+          = f2.label "Estado"
+          = f2.text_field :state, class: "form-control"
+      .col-3
+        .form-group
+          = f2.label "CEP"
+          = f2.text_field :zipcode, class: "form-control"
   br
   .actions
     = f.submit "Salvar", class: "btn btn-success"
@@ -77,52 +87,7 @@ javascript:
     }, "json").fail(function(e) {
         alert("Ocorreu um erro durante este processo.");
     });
-  }
-
-  String.prototype.convertCurrencyBrToUs = function() {
-      let valor = this.split(".").join("").split(",").join(".").split(" ").join("");
-      if (valor.match(/^([0-9]+|[0-9]+\.[0-9]*)$/g) != null) {
-          return valor;
-      }
-      return "0";
-  }
-
-  Number.prototype.cutDecimalPlaces = function(qtd) {
-      let valor = String(this);
-      let partes = valor.split(".");
-      if (partes.length > 1) {
-          partes[1] = partes[1].substr(0, qtd);
-      }
-      return parseFloat(partes.join("."));
-  }
-
-  String.prototype.convertCurrencyUsToBr = function() {
-      let arrayTmp = String(this).split(".");
-      let real = arrayTmp[0];
-      let decimal = ",00";
-      if (arrayTmp.length > 1) {
-          decimal = "," + arrayTmp[1];
-          if (decimal.length == 2) {
-              decimal += "0";
-          }
-      }
-      if (real.length > 3) {
-          let contador = 0;
-          let realTmp = [];
-          for (let i=real.length-1; i>=0; i--) {
-              realTmp.push(real[i]);
-              contador++;
-              if (contador == 3) {
-                  contador = 0;
-                  if (i > 0) {
-                      realTmp.push(".");
-                  }                
-              }
-          }
-          real = realTmp.reverse().join("");
-      }
-      return real + decimal;
-  }
+  }  
 
   jQuery(document).ready(function() {
     jQuery("#user_wage").keyup(function() {

@@ -1,6 +1,21 @@
 class User < ApplicationRecord
     has_one :address, dependent: :destroy
 
+    accepts_nested_attributes_for :address
+
+    validates :name, presence: true
+    validates :cpf, presence: true
+    validates :birth_date, presence: true
+    validates :wage, presence: true
+
+    before_create :set_deduction
+    before_update :set_deduction
+
+    def set_deduction
+        self.deduction = User.calculate_deduction(self.wage)
+    end
+
+
     def self.ranges
         [
             {:v => 1045, :p => 7.5, :q => 0},
@@ -12,6 +27,24 @@ class User < ApplicationRecord
             {:v => 40747.20, :p => 19.0, :q => 0},
             {:p => 22, :q => 0},
         ]
+    end
+
+    def self.calculate_ranges
+        users = User.all
+        ranges = self.ranges
+        users.each do |user|
+            ranges.size.times do |i|
+                if (ranges[i][:v] != nil)
+                    if (user.wage <= ranges[i][:v])
+                        ranges[i][:q] += 1
+                        break
+                    end
+                else
+                    ranges[i][:q] += 1
+                end
+            end
+        end
+        ranges
     end
 
     def self.calculate_deduction wage

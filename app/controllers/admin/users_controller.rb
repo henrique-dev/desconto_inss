@@ -17,6 +17,7 @@ class Admin::UsersController < AdminController
   # GET /users/new
   def new
     @user = User.new
+    @user.address = Address.new
   end
 
   # GET /users/1/edit
@@ -26,9 +27,11 @@ class Admin::UsersController < AdminController
   # POST /users or /users.json
   def create
     @user = User.new(user_params)
-
+    @address = Address.new(user_params["address_attributes"])
     respond_to do |format|
-      if @user.save
+      if @user.save && @address.save
+        #@address.user_id = @user.id
+        
         format.html { redirect_to @user, notice: "User was successfully created." }
         format.json { render :show, status: :created, location: @user }
       else
@@ -42,6 +45,7 @@ class Admin::UsersController < AdminController
   def update
     respond_to do |format|
       if @user.update(user_params)
+        @address.update(address_params)
         format.html { redirect_to @user, notice: "User was successfully updated." }
         format.json { render :show, status: :ok, location: @user }
       else
@@ -64,11 +68,16 @@ class Admin::UsersController < AdminController
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
+      @address = @user.address
     end
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:name, :cpf, :birth_date, :wage, 
-      :street, :number, :neighborhood, :city, :state, :zipcode)
+      params.require(:user).permit(:name, :cpf, :birth_date, :wage, :telephone_1, :telephone_2, address_attributes: [:street, :number, :neighborhood, :city, :state, :zipcode])
+      #:street, :number, :neighborhood, :city, :state, :zipcode)
+    end
+
+    def address_params
+      params.require(:user).permit(:address_attributes)
     end
 end

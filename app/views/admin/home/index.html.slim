@@ -4,29 +4,11 @@
   div.x_content
 .row
   .col-12.tile_count
-    .col-md-4.col-sm-4.tile_stats_count
+    .col-md-12.col-sm-12.tile_stats_count
       span.count_top
         i.fa.fa-user
-        | Total pacientes cadastrados
-      div.count = @patients_count
-      span.count_bottom
-        i.green 0%
-        |  da última semana
-
-    .col-md-4.col-sm-4.tile_stats_count
-      span.count_top
-        i.fa.fa-user
-        | Total médicos cadastrados
-      div.count = @medics_count
-      span.count_bottom
-        i.green 0%
-        |  da última semana
-    
-    .col-md-4.col-sm-4.tile_stats_count
-      span.count_top
-        i.fa.fa-user
-        | Total clínicas cadastradas
-      div.count = @clinics_count
+        | Total de usuários cadastrados
+      div.count = @users.count
       span.count_bottom
         i.green 0%
         |  da última semana
@@ -35,8 +17,10 @@
   .col-md-12
     .x_panel
       .x_content
-        .col-md-9
-          .demo-container style="height:280px"
-            #chart_plot_02.demo-placeholder
+        .col-md-12
+          canvas#chart_plot
 
 = javascript_include_tag 'home'
+
+javascript:
+  let ranges = #{@ranges.to_json.html_safe};

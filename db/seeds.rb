@@ -2,8 +2,6 @@ DEFAULT_PASSWORD_ADMIN = 'ZXDas7966mby@'
 DEFAULT_PASSWORD_USER = '123456'
 
 Admin.create!(email: 'admin1@dss.com', password: DEFAULT_PASSWORD_ADMIN, password_confirmation: DEFAULT_PASSWORD_ADMIN)
-Admin.create!(email: 'admin2@dss.com', password: DEFAULT_PASSWORD_ADMIN, password_confirmation: DEFAULT_PASSWORD_ADMIN)
-Admin.create!(email: 'admin3@dss.com', password: DEFAULT_PASSWORD_ADMIN, password_confirmation: DEFAULT_PASSWORD_ADMIN)
 
 1000.times do |i|
     cpf = (i == 9 ? "01741053200" : Faker::Number.leading_zero_number(digits: 11))

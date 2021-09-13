@@ -74,7 +74,7 @@ class Pdf::General
         end
         series << Prawn::Graph::Series.new(data_series,  title: "", type: :bar)
 
-        pdf.graph series, width: pdf.bounds.width, height: 200, title: "", at: [10, 650], xaxis_labels: xaxis_labels
+        pdf.graph series, width: pdf.bounds.width, height: 200, title: "Distribuição de renda", at: [10, 650], xaxis_labels: xaxis_labels
         
     end
     

@@ -27,28 +27,28 @@ p#notice = notice
     .col-10
       .form-group
         = f.label "Logradouro"
-        = f.text_field :street, class: "form-control", readonly: true
+        = f.text_field :street, class: "form-control", readonly: true, value: @user.address.street
     .col-2
       .form-group
         = f.label "Número"
-        = f.text_field :number, class: "form-control", readonly: true
+        = f.text_field :number, class: "form-control", readonly: true, value: @user.address.number
   .row
     .col-3
       .form-group
         = f.label "Bairro"
-        = f.text_field :neighborhood, class: "form-control", readonly: true
+        = f.text_field :neighborhood, class: "form-control", readonly: true, value: @user.address.neighborhood
     .col-3
       .form-group
         = f.label "Cidade"
-        = f.text_field :city, class: "form-control", readonly: true
+        = f.text_field :city, class: "form-control", readonly: true, value: @user.address.city
     .col-3
       .form-group
         = f.label "Estado"
-        = f.text_field :state, class: "form-control", readonly: true
+        = f.text_field :state, class: "form-control", readonly: true, value: @user.address.state
     .col-3
       .form-group
         = f.label "CEP"
-        = f.text_field :zipcode, class: "form-control", readonly: true
+        = f.text_field :zipcode, class: "form-control", readonly: true, value: @user.address.zipcode
 
 => link_to 'Editar', edit_user_path(@user), class: "btn btn-primary"
 =< link_to 'Voltar', users_path, class: "btn btn-warning"

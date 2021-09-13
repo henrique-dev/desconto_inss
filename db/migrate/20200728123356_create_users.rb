@@ -7,12 +7,8 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.decimal :wage
       t.decimal :deduction, default: 0.0
 
-      t.string :street
-      t.string :number
-      t.string :neighborhood
-      t.string :city
-      t.string :state
-      t.string :zipcode
+      t.string :telephone_1
+      t.string :telephone_2
 
       t.timestamps
     end

@@ -1,94 +1,53 @@
 //= require jquery
-//= require chart
+//= require chart.js
 
-if (jQuery("#chart_plot_02").length) {
+jQuery(document).ready(function() {
+    var ctx = $('#chart_plot');
 
-    if (typeof ($.plot) === 'undefined') {  } else {
-        let chart_plot_02_data = [];
-
-        var randNum = function () {
-            return (Math.floor(Math.random() * (1 + 40 - 20))) + 20;
-        };
-
-        for (var i = 0; i < 30; i++) {
-            chart_plot_02_data.push([new Date().getTime(), randNum() + i + i + 10]);
+    let labels = [];
+    let data = [];
+    ranges.forEach(function(range, index) {
+        if (index+1 == ranges.length) {
+            labels.push(String(parseFloat(ranges[index-1]["v"]) + 0.01).convertCurrencyUsToBr());
+            data.push(range["q"]);
+        } else {
+            labels.push(String(range["v"]).convertCurrencyUsToBr());
+            data.push(range["q"]);
         }
+    });
 
-        var chart_plot_02_settings = {
-            grid: {
-                show: true,
-                aboveData: true,
-                color: "#3f3f3f",
-                labelMargin: 10,
-                axisMargin: 0,
-                borderWidth: 0,
-                borderColor: null,
-                minBorderMargin: 5,
-                clickable: true,
-                hoverable: true,
-                autoHighlight: true,
-                mouseActiveRadius: 100
-            },
-            series: {
-                lines: {
-                    show: true,
-                    fill: true,
-                    lineWidth: 2,
-                    steps: false
-                },
-                points: {
-                    show: true,
-                    radius: 4.5,
-                    symbol: "circle",
-                    lineWidth: 3.0
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: "Distribuição de renda",
+                data: data,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
                 }
-            },
-            legend: {
-                position: "ne",
-                margin: [0, -25],
-                noColumns: 0,
-                labelBoxBorderColor: null,
-                labelFormatter: function (label, series) {
-                    return label + '&nbsp;&nbsp;';
-                },
-                width: 40,
-                height: 1
-            },
-            colors: ['#96CA59', '#3F97EB', '#72c380', '#6f7a8a', '#f7cb38', '#5a8022', '#2c7282'],
-            shadowSize: 0,
-            tooltip: true,
-            tooltipOpts: {
-                content: "%s: %y.0",
-                xDateFormat: "%d/%m",
-                shifts: {
-                    x: -30,
-                    y: -50
-                },
-                defaultTheme: false
-            },
-            yaxis: {
-                min: 0
-            },
-            xaxis: {
-                mode: "time",
-                minTickSize: [1, "day"],
-                timeformat: "%d/%m/%y",
-                min: chart_plot_02_data[0][0],
-                max: chart_plot_02_data[20][0]
             }
-        };
-
-        jQuery.plot($("#chart_plot_02"),
-            [{
-                label: "Email Sent",
-                data: chart_plot_02_data,
-                lines: {
-                    fillColor: "rgba(150, 202, 89, 0.12)"
-                },
-                points: {
-                    fillColor: "#fff"
-                }
-            }], chart_plot_02_settings);
-    }
-
-}
+        }
+    });
+})
