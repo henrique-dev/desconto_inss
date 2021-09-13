@@ -1,8 +1,6 @@
 //= require jquery
 //= require chart
 
-console.log("HERE");
-
 if (jQuery("#chart_plot_02").length) {
 
     if (typeof ($.plot) === 'undefined') {  } else {

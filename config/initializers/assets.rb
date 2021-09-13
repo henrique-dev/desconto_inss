@@ -15,18 +15,6 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 Rails.application.config.assets.precompile += %w( 
     admin.js
     admin.css
-
-    user/disease.js
-
-    user.js
-    user.css
-
-    clinic_profiles.js
-    patient_profiles.js
-    medic_profiles.js
-    medic_work_schedulings.js
-
-    messages.js
-
-    home.js
+    users.js
+    users.css
  )

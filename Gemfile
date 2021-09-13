@@ -6,7 +6,8 @@ ruby '2.7.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.0'
 # Use mysql as the database for Active Record
-gem 'mysql2', '>= 0.4.4', '< 0.6.0'
+#gem 'mysql2', '>= 0.4.4', '< 0.6.0'
+gem 'pg', '~> 0.18.4'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -43,14 +44,13 @@ gem 'slim-rails'
 gem 'devise'
 gem 'devise_token_auth'
 gem 'faker'
-gem 'omniauth'
-gem 'will_paginate'
-gem 'will_paginate-bootstrap'
 gem 'breadcrumbs_on_rails'
 gem 'font-awesome-rails'
-gem 'twilio-ruby'
+gem 'kaminari', '~> 0.17.0'
+gem 'prawn', '~> 2.1'
+gem 'prawn-table'
+gem 'prawn-graph', ' ~> 1.0'
 
-gem 'dbf'
 gem 'material_icons'
 
 

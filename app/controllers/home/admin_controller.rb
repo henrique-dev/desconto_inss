@@ -1,7 +1,4 @@
 class Home::AdminController < AdminController
-  def index
-    @patients_count = Patient.count
-    @medics_count = Medic.count
-    @clinics_count = Clinic.count
+  def index    
   end
 end

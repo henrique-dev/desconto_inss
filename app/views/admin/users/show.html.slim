@@ -1,0 +1,20 @@
+p#notice = notice
+
+.form-group
+  label Nome:
+  input.form-control readonly=true value="#{@user.name}"
+.form-group
+  label CPF:
+  input.form-control readonly=true value="#{@user.cpf}"
+.form-group
+  label Data nascimento:
+  input.form-control readonly=true value="#{Date.parse(@user.birth_date).strftime("%d/%m/%Y")}"
+.form-group
+  label Salário:
+  input.form-control readonly=true value="#{@user.wage}"
+.form-group
+  label Desconto INSS:
+  input.form-control readonly=true value="#{@user.deduction}"
+
+=> link_to 'Editar', edit_user_path(@user), class: "btn btn-primary"
+=< link_to 'Voltar', users_path, class: "btn btn-warning"

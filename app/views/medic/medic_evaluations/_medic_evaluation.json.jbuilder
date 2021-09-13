@@ -1,2 +1,0 @@
-json.extract! medic_evaluation, :id, :description, :rating, :patient_profile_id, :medic_profile_id, :scheduling_id, :created_at, :updated_at
-json.url patient_medic_evaluation_url(medic_evaluation, format: :json)

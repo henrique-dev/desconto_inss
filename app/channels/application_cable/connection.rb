@@ -22,24 +22,6 @@ module ApplicationCable
 
     private
 
-    def find_verified_patient access_token, uid, client
-      user = Patient.find_by(cpf: uid)
-      if user && user.valid_token?(access_token, client)
-          user
-      else
-          reject_unauthorized_connection
-      end
-    end
-
-    def find_verified_medic access_token, uid, client
-      user = Medic.find_by(cpf: uid)
-      if user && user.valid_token?(access_token, client)
-          user
-      else
-          reject_unauthorized_connection
-      end
-    end
-
     def find_verified_admin admin_id
       if user = Admin.find_by(id: admin_id)
           user

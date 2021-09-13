@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
   <head>
     <meta content="text/html; charset=UTF-8">
     <meta http-equiv="Content-Type">
@@ -7,13 +7,55 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>DSS</title>
+    <title>Desconto INSS</title>
 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application' %>
     <%= stylesheet_link_tag 'admin' %>    
+
+    <style>
+      .pagination a, .pagination span.current, .pagination span.gap {
+          float: right;
+          padding: 0 14px;
+          line-height: 38px;
+          text-decoration: none;
+          background-color: white;
+          border: 1px solid #DDD;
+          border-left-width: 0;
+      }
+
+      .pagination {
+        border-left: 1px solid #ddd;
+        display: inline-flex;
+      }
+      .first{
+          padding : 0;
+          float: right;
+          border: none;
+      }
+      .prev {
+          padding : 0;
+          float: right;
+          border: none;
+      }
+      .page{
+          padding : 0;
+          float: right;
+          border: none;
+      }
+      .next{
+          padding : 0;
+          float: right;
+          border: none;
+      }
+      .last{
+          padding : 0;
+          float: right;
+          border: none;
+      }
+    </style>
     
   </head>
 
@@ -21,12 +63,7 @@
     <div class="container body">
       <div class="main_container">
         <div class="col-md-3 left_col menu_fixed">
-          <div class="left_col scroll-view">
-            <div class="navbar nav_title" style="border: 0; padding: 10px">
-              <a href="<%= home_index_path %>" class="site_title"><%= image_tag("/images/logo.png", size: "175x50")%></a>
-            </div>
-
-            <div class="clearfix"></div>
+          <div class="left_col scroll-view">            
 
             <!-- menu profile quick info -->
             <div class="profile clearfix">
@@ -46,29 +83,9 @@
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">                
                 <ul class="nav side-menu">
-                  <li><a><i class=""></i> Cadastro Simples <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><%= link_to "Clínicas", clinic_profiles_path %></li>
-                      <li><%= link_to "Médicos", medic_profiles_path %></li>
-                      <li><%= link_to "Pacientes", patient_profiles_path %></li>
-                      <li><%= link_to "Especialidades", specialities_path %></li>
-                    </ul>
-                  </li>
-                  <li><a><i class=""></i> Cadastro avançado <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><%= link_to "Médicos | Agendas", medic_work_schedulings_path %></li>
-                    </ul>
-                  </li>
-                  <li><a><i class=""></i> Consultas <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><%= link_to "Gerar encaminhamentos", schedulings_path %></li>
-                    </ul>
-                  </li>
-                  <li><a><i class=""></i> Suporte <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><%= link_to "Chat", messages_path %></li>
-                    </ul>
-                  </li>
+                  <li><%= link_to "Dashboard", users_path %></li>
+                  <li><%= link_to "Cadastro", users_path %></li>
+                  <li><%= link_to "Relatório", general_reports_path %></li>
                 </ul>
               </div>
             </div>
