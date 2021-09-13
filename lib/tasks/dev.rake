@@ -11,13 +11,6 @@ namespace :dev do
     # end
   end
 
-  task clear_sessions: :environment do
-    if Rails.env.development?
-      sql = 'DELETE FROM sessions WHERE updated_at < DATE_SUB(NOW(), INTERVAL 1 DAY);'
-      ActiveRecord::Base.connection.execute(sql)
-    end
-  end
-
   def show_spinner(msg)
     spinner = TTY::Spinner.new(msg, format: :classic)
     spinner.auto_spin
