@@ -5,7 +5,7 @@ Admin.create!(email: 'admin1@dss.com', password: DEFAULT_PASSWORD_ADMIN, passwor
 Admin.create!(email: 'admin2@dss.com', password: DEFAULT_PASSWORD_ADMIN, password_confirmation: DEFAULT_PASSWORD_ADMIN)
 Admin.create!(email: 'admin3@dss.com', password: DEFAULT_PASSWORD_ADMIN, password_confirmation: DEFAULT_PASSWORD_ADMIN)
 
-10.times do |i|
+1000.times do |i|
     cpf = (i == 9 ? "01741053200" : Faker::Number.leading_zero_number(digits: 11))
     wage = "#{Random.rand(8)+1}#{Random.rand(8)+1}00".to_f
 

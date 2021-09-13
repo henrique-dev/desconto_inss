@@ -67,6 +67,12 @@ ActiveRecord::Schema.define(version: 2020_07_28_123358) do
     t.string "birth_date"
     t.decimal "wage"
     t.decimal "deduction", default: "0.0"
+    t.string "street"
+    t.string "number"
+    t.string "neighborhood"
+    t.string "city"
+    t.string "state"
+    t.string "zipcode"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

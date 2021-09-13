@@ -1,4 +1,6 @@
 class Pdf::General
+    require 'prawn-graph'
+    
     def self.begin users
         pdf = Prawn::Document.new(:page_size => "A4", :margin => [20, 20, 20, 20], :page_layout => :portrait)
         self.header(pdf)
@@ -53,6 +55,27 @@ class Pdf::General
                 #row.row(i).columns(1).size = 12
             end
 		end
+
+        series = []
+        #series << Prawn::Graph::Series.new([5,4,3,2,7,9,2,8,7,5,4,9,2],  title: "Another label", type: :line, mark_average: true, mark_minimum: true)
+        #series << Prawn::Graph::Series.new([1,2,3,4,5,9,6,4,5,6,3,2,11], title: "Yet another label", type: :bar)
+        #series << Prawn::Graph::Series.new([1,2,3,4,5,12,6,4,5,6,3,2,9].shuffle, title: "One final label", type: :line, mark_average: true, mark_maximum: true)
+
+        xaxis_labels = []
+        data_series = []
+        ranges.size.times do |i|
+            if (ranges[i][:v] != nil)
+                xaxis_labels << "<= #{("%.2f" % (ranges[i][:v])).to_s.gsub(".", ",")}"
+                data_series << ranges[i][:q]
+            else
+                xaxis_labels << ">= #{("%.2f" % (ranges[i-1][:v] + 0.01)).to_s.gsub(".", ",")}"
+                data_series << ranges[i][:q]
+            end
+        end
+        series << Prawn::Graph::Series.new(data_series,  title: "", type: :bar)
+
+        pdf.graph series, width: pdf.bounds.width, height: 200, title: "", at: [10, 650], xaxis_labels: xaxis_labels
         
     end
+    
 end

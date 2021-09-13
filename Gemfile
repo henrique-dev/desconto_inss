@@ -50,6 +50,8 @@ gem 'kaminari', '~> 0.17.0'
 gem 'prawn', '~> 2.1'
 gem 'prawn-table'
 gem 'prawn-graph', ' ~> 1.0'
+gem 'sidekiq'
+gem 'rubocop', '~> 0.39.0'
 
 gem 'material_icons'
 

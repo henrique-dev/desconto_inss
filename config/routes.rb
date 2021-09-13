@@ -1,6 +1,10 @@
 Rails.application.routes.draw do  
+
+  require 'sidekiq/web'  
   
   devise_for :admins, at: 'admins/auth'
+  
+  mount Sidekiq::Web => '/sidekiq'
 
   scope module: 'admin' do
 

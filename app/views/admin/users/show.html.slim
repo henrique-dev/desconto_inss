@@ -1,20 +1,54 @@
 p#notice = notice
 
-.form-group
-  label Nome:
-  input.form-control readonly=true value="#{@user.name}"
-.form-group
-  label CPF:
-  input.form-control readonly=true value="#{@user.cpf}"
-.form-group
-  label Data nascimento:
-  input.form-control readonly=true value="#{Date.parse(@user.birth_date).strftime("%d/%m/%Y")}"
-.form-group
-  label Salário:
-  input.form-control readonly=true value="#{@user.wage}"
-.form-group
-  label Desconto INSS:
-  input.form-control readonly=true value="#{@user.deduction}"
+= form_for @user do |f|
+  .row
+    .col-9
+      .form-group
+        = f.label "Nome"
+        = f.text_field :name, class: "form-control", readonly: true
+    .col-3
+      .form-group
+        = f.label :cpf
+        = f.text_field :cpf, class: "form-control", readonly: true
+  .row
+    .col-4
+      .form-group
+        = f.label "Data de nascimento"
+        = f.date_field :birth_date, class: "form-control", value: @user.birth_date, readonly: true
+    .col-4
+      .form-group
+        = f.label "Salário"
+        = f.text_field :wage, class: "form-control", readonly: true
+    .col-4
+      .form-group
+        = f.label "Desconto INSS"
+        = f.text_field :deduction, class: "form-control" , readonly: true, value: @user.deduction
+  .row
+    .col-10
+      .form-group
+        = f.label "Logradouro"
+        = f.text_field :street, class: "form-control", readonly: true
+    .col-2
+      .form-group
+        = f.label "Número"
+        = f.text_field :number, class: "form-control", readonly: true
+  .row
+    .col-3
+      .form-group
+        = f.label "Bairro"
+        = f.text_field :neighborhood, class: "form-control", readonly: true
+    .col-3
+      .form-group
+        = f.label "Cidade"
+        = f.text_field :city, class: "form-control", readonly: true
+    .col-3
+      .form-group
+        = f.label "Estado"
+        = f.text_field :state, class: "form-control", readonly: true
+    .col-3
+      .form-group
+        = f.label "CEP"
+        = f.text_field :zipcode, class: "form-control", readonly: true
 
 => link_to 'Editar', edit_user_path(@user), class: "btn btn-primary"
 =< link_to 'Voltar', users_path, class: "btn btn-warning"

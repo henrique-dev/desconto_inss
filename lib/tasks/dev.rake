@@ -26,5 +26,4 @@ namespace :dev do
     yield
     spinner.success
   end
-
 end
