@@ -6,7 +6,7 @@ ruby '2.7.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.0'
 # Use mysql as the database for Active Record
-#gem 'mysql2', '>= 0.4.4', '< 0.6.0'
+# gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 gem 'pg', '~> 0.18.4'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
@@ -42,7 +42,7 @@ gem 'tty-spinner'
 gem 'rails-i18n', '~> 5.1'
 gem 'slim-rails'
 gem 'devise'
-#gem 'devise_token_auth'
+# gem 'devise_token_auth'
 gem 'faker'
 gem 'breadcrumbs_on_rails'
 gem 'font-awesome-rails'
@@ -54,7 +54,6 @@ gem 'sidekiq'
 gem 'rubocop', '~> 0.39.0'
 
 gem 'material_icons'
-
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -68,10 +67,10 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'capistrano', "~> 3.11", require: false
+  gem 'capistrano', '~> 3.11', require: false
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler', '~> 1.5'
-  gem 'capistrano-rails', "~> 1.4", require: false
+  gem 'capistrano-rails', '~> 1.4', require: false
   gem 'capistrano3-unicorn'
 end
 
