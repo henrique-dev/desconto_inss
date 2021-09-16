@@ -3,6 +3,7 @@ class WageUpdateJob < ApplicationJob
 
   def perform(*args)
     # Do something later
+    sleep(20)
     wage_percent_add = args[0]
     User.all.each do |user|
       user.wage += user.wage * (wage_percent_add / 100)
